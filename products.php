@@ -54,7 +54,7 @@ class ProduktHand{
 }
 
 ToroHook::add("404", function() {
-	echo "Not found. ATOMLOL";
+	echo "404 - Seite nicht gefunden!";
 });
 
 Toro::serve(array(
