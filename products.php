@@ -35,11 +35,11 @@ class ProduktHandler
 	
 	       	if (isset($_GET["ID"])){
 	            echo ($entries[$_GET["ID"]]);
+	            
+	            foreach($entries[$_GET["ID"]] as $value){
+                       echo ($value);
+            	    }
 	        }
-	
-	        foreach($entries[$_GET["ID"]] as $value){
-                    echo ($value);
-            	}
 	}
 }
 
