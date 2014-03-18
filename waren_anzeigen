@@ -1,3 +1,31 @@
+<html>
+<head>
+<title>Warenkorb anzeigen</title>
+</head>
+<body>
+
+<h1>Warenkorb anzeigen</h1>
+
+<table border="1">
+  <tr>
+    <th>Anzahl</th>
+    <th>Ware</th>
+    <th>Preis</th>
+  </tr>
+  <tr>
+    <td>Beispielware 01.01</td>
+    <td>Beispielware 01.02</td>
+    <td>Beispielware 01.03</td>
+  </tr>
+  <tr>
+    <td>Beispielware 02.01</td>
+    <td>Beispielware 02.02</td>
+    <td>Beispielware 02.03</td>
+  </tr>
+</table>
+</body>
+</html>
+
 <?php
 foreach ($waren as $id => $produkt){
     printf(
