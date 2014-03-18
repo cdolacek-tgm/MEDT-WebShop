@@ -1,15 +1,31 @@
 <?php
-//Wenn kein Produkt ausgewaehlt wurde oder existiert.
+
+session_start();
+?>
+<html>
+<head><title>Loeschen</title></head>
+<body>
+
+
+<?php
+//include("produkte.php");
+//Wenn kein Produkt ausgewaehlt wurde oder existiert
 if(!isset($_GET['id']) || !in_array($_GET['id'],$_SESSION['warenkorb'])){
-	print ("Noch kein Produkt gewaehlt/bestellt");
+   print ("Noch kein Produkt gewaehlt/bestellt");
 }
-//ansonsten soll er das Produkt loeschen.
 else{
-	foreach ($_SESSION['warenkorb'] as id => $produkt){
-		if($produkt == $_GET ['id']){
-			unset($_SESSION['warenkorb'][$id]);
-		}
-	}
-	print"<p>Produkt wurde geloescht.</p>";
+   foreach ($_SESSION['warenkorb'] as $id => $produkt){
+       if($produkt == $_GET ['id']){
+           unset($_SESSION['warenkorb'][$id]);
+       }
+   }
+   print"<p> Produkt wurde geloescht.</p>";
 }
 ?>
+
+<p><a href = "warenkorb.php?<?php print SID; ?>"> zum Warenkorb </a></p>
+
+<p><a href = "produkte.php?<?php print SID; ?>"> zu den Produkten </a></p>
+</div>
+</body>
+</html>
