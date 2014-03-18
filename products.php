@@ -32,6 +32,20 @@ class ProduktHandler
 			echo ($entries[$_GET["ID"]]);
 		}
 	}
+	
+	
+	 // Liefert Produkte anhand deren ID zurueck
+	 function getProdukte{
+		$entries = json_decode( file_get_contents( "./produkte.txt" ) );
+	
+	       	if (isset($_GET["ID"])){
+	            echo ($entries[$_GET["ID"]]);
+	        }
+	
+	        foreach($_GET["ID"] as $value){
+	            echo ($value);
+	        }
+	}
 }
 
 class ProduktHand{
