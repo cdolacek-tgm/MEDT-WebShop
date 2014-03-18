@@ -1,17 +1,20 @@
 Die Datei bestellen.php legt Produkte in den Warenkorb 
 
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Bestellen</title>
+    <script type="text/javascript" src="./produkte.json"></script>
+    </head>
+ 
+	 
 <?php
-
-if (!isset($_GET['id'])) {
-    die("Kein Produkt ausgew&auml;hlt.");
-}
-
-// Wenn das Produkt noch nicht gekauft wurde...
-if (!isset($_SESSION['warenkorb']) ||
-    !in_array($_GET['id'], $_SESSION['warenkorb'])) {
-
-    // In den Warenkorb legen:
-    $_SESSION['warenkorb'][] = $_GET['id'];
+var warenkorb = [];
+ 
+function zumWarenkorb(ID) {
+    var produkt = document.getElementById('produkt' + ID).innerHTML;
+    warenkorb.push(seminar);
 }
 ?>
+</html>
 
