@@ -1,9 +1,9 @@
 * User anlegen *Rathbauer*
 * User einloggen *Liebl*
 
-* Produkt suchen *Dienesch*
+* Produkt suchen *Horak*
 * Produkt anzeigen *Herczeg*
-* Produkte anzeigen *Horak*
+* Produkte anzeigen *Dienesch*
 * Produkt anlegen *Böheim*
 * Produkt aktualisieren *Dorfinger*
 * Produkt löschen *Weiss*
