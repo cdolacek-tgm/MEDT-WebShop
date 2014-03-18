@@ -43,9 +43,24 @@ CREATE TABLE `cart`
 (
     `userID` INTEGER NOT NULL,
     `productID` INTEGER NOT NULL,
+	
     PRIMARY KEY (`userID`,`productID`),
     INDEX `cart_FI_2` (`productID`)
 ) ENGINE=MyISAM;
 
+
+DROP TABLE IF EXISTS `bestellungen`;
+
+create table bestellungen ( 
+	bestellID integer AUTO_INCREMENT,
+	status VARCHAR (10), 
+	productID INTEGER NOT NULL, 
+	
+	PRIMARY KEY (bestellID)
+
+)ENGINE=MyISAM;
+
+
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
+	
