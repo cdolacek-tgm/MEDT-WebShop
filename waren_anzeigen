@@ -1,5 +1,5 @@
 <?php
-foreach ($waren as $id => $produkt) {
+foreach ($waren as $id => $produkt){
     printf(
            $produkt['titel'],
            $produkt['preis'],
@@ -9,11 +9,11 @@ foreach ($waren as $id => $produkt) {
 }
 
 if (isset($_SESSION['warenkorb']) &&
-   !empty($_SESSION['warenkorb'])) {
+   !empty($_SESSION['warenkorb'])){
 
     print "Sie haben folgende Waren bereits ausgew&auml;hlt:";
     print "<ul>";
-    foreach ($_SESSION['warenkorb'] as $id) {
+    foreach ($_SESSION['warenkorb'] as $id){
         printf('<li>
                 %s
                 (<a href="entfernen.php?id=%d&%s">
