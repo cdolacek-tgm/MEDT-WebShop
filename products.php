@@ -1,78 +1,54 @@
 <?php
 
 require 'vendor/autoload.php';
- 
-if ( !file_exists("./produkte.json") ) {
-	$Produkte = array();
-	$daten = array();
-	$daten["ID"] = "0";
-	$daten["name"] = "test";
-	$daten["beschreibung"] = "test";
-	$daten["bewertung"] = "5/5";
-	$Produkte[$daten["ID"]] = $daten;
- 
-	file_put_contents("./produkte.txt", json_encode($Produkte));
-}
- 
+
 class ProduktHandler
 {
+	$link = mysql_connect('localhost', 'root', '');
+	//Unter der Vorraussetzung, dass die DB webshop heisst und der root user verw. wird
+	
 	//Registriert den Benutzer wenn er noch nicht angemeldet ist.
+	//Autor: David Böheim
 	function put()
 	{
 		//David Boeheims arbeit :)
 	}
 
 	//Liefert ein Produkt anhand seiner ID zurueck
+	//Autor: Daniel Herczeg
 	function get()
 	{
-		$entries = json_decode( file_get_contents( "./produkte.txt" ) );
+		mysql_select_db('webshop', $this->link);
+		$erg = mysql_query('select * from products limit by 1', $this->link);
+		//Bekommt nur das erste Element, muss noch implementiert werden
 		
-		if (isset($_GET["ID"]))
+		while($row = mysql_fetch_array($erg))
 		{
-			echo ($entries[$_GET["ID"]]);
+			echo $row['id']."; ".$row['beschr'];
 		}
 	}
 	
+	 // Liefert Produkte anhand deren ID zurueck
+	 //Autor: Florian Dienesch?
+	 function getProdukte{
+		$entries = json_decode( file_get_contents( "./produkte.txt" ) );
 	
-    	// Liefert Produkte anhand deren ID zurueck
-    	function getProdukte(){
-	   $entries = json_decode( file_get_contents( "./produkte.txt" ) );
-
-	 if (isset($_GET["ID"])){
-        	    echo ($entries[$_GET["ID"]]);
-            
-        	    foreach($entries[$_GET["ID"]] as $value){
-        	        echo ($value);
-        	    }
-        	}
-    	}
-}
-
-class ProduktHand{
-	function get(){
-		//file oeffnen
-		$entries = json_decode( file_get_contents("./produkte.txt"));
-		
-		//pruefen der Eingabe
-		if(isset($_GET["name"]) &&  isset($_GET["beschreibung"]) && isset($_GET["bewertung"]) && isset($_GET["ID"])){
-			//holt sich das Element mit der ID
-			$entries->getElementById($_GET["ID"]);
-			//schreibt die Daten hinein
-			$daten["name"] = $_GET["name"];
-			$daten["beschreibung"] = $_GET["beschreibung"];
-			$daten["bewertung"] = $_GET["bewertung"];
-		}
-		//schließt und speichert das File
-		file_put_contents("./produkte.txt",json_encode($Produkte));
+	       	if (isset($_GET["ID"])){
+	            echo ($entries[$_GET["ID"]]);
+	        }
+	
+	        foreach($_GET["ID"] as $value){
+	            echo ($value);
+	        }
 	}
 }
 
 ToroHook::add("404", function() {
-	echo "404 - Seite nicht gefunden!";
+	echo "404 - ATOMLOL! Seite nicht gefunden!";
 });
 
 Toro::serve(array(
 	"/products.php" => "ProduktHandler", //PUT - Registrieren
-	"/products/log/show.php" => "ProduktHand", //GET - Anzeigen
+	"/products/log/show.php" => "ProduktHandler", //GET - Anzeigen
 ));
 ?>
