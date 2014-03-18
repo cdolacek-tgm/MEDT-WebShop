@@ -8,7 +8,7 @@ class ProduktHandler
 	//Unter der Vorraussetzung, dass die DB webshop heisst und der root user verw. wird
 	
 	//Registriert den Benutzer wenn er noch nicht angemeldet ist.
-	//Autor: David Böheim
+	//Autor: David Boeheim
 	function put()
 	{
 		//David Boeheims arbeit :)
@@ -29,7 +29,7 @@ class ProduktHandler
 	}
 	
 	 // Liefert Produkte anhand deren ID zurueck
-	 //Autor: Florian Dienesch?
+	 //Autor: Florian Dienesch
 	 function getProdukte{
 		$entries = json_decode( file_get_contents( "./produkte.txt" ) );
 	
@@ -37,9 +37,9 @@ class ProduktHandler
 	            echo ($entries[$_GET["ID"]]);
 	        }
 	
-	        foreach($_GET["ID"] as $value){
-	            echo ($value);
-	        }
+	        foreach($entries[$_GET["ID"]] as $value){
+                    echo ($value);
+            	}
 	}
 }
 
